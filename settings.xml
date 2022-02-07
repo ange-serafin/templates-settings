@@ -1,0 +1,46 @@
+<settings>
+    <localRepository>D:\Users\xeno-warrior\.m2\repository</localRepository>
+    <mirrors>
+        <mirror>
+            <id>central-no-ssl</id>
+            <name>Central without ssl</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <mirrorOf>*</mirrorOf>
+
+        </mirror>
+    </mirrors>
+
+    <activeProfiles>
+        <!--make the profile active all the time -->
+        <activeProfile>insecurecentral</activeProfile>
+    </activeProfiles>
+    <profiles>
+        <profile>
+            <properties>
+                <maven.wagon.http.ssl.insecure>true</maven.wagon.http.ssl.insecure>
+                <maven.wagon.http.ssl.allowall>true</maven.wagon.http.ssl.allowall>
+                <maven.wagon.http.ssl.ignore.validity.dates>true</maven.wagon.http.ssl.ignore.validity.dates>
+            </properties>
+            <id>insecurecentral</id>
+            <!--Override the repository (and pluginRepository) "central" from the Maven Super POM -->
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>http://repo1.maven.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>http://repo1.maven.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+</settings>
