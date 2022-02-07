@@ -1,0 +1,2 @@
+# templates-settings
+maven settings
